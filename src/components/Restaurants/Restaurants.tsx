@@ -7,6 +7,8 @@ export const Restaurants = ({
 }: {
   restaurants: RestaurantData[];
 }) => {
+  if (!restaurants?.length) return null;
+
   return (
     <Content>
       {restaurants.map((restaurant) => (
