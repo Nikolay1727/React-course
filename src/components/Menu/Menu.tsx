@@ -1,5 +1,6 @@
 import { DishData } from "@/constants";
 import { Dish } from "../Dish";
+import { Container } from "./styled";
 
 export const Menu = ({ menu }: { menu: DishData[] }) => {
   if (!menu?.length) return null;
@@ -7,13 +8,13 @@ export const Menu = ({ menu }: { menu: DishData[] }) => {
   return (
     <div>
       <h3>Меню</h3>
-      <ul>
+      <Container>
         {menu.map((dish) => (
-          <li>
-            <Dish key={dish.id} dish={dish} />
+          <li key={dish.id}>
+            <Dish dish={dish} />
           </li>
         ))}
-      </ul>
+      </Container>
     </div>
   );
 };
