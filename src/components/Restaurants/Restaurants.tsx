@@ -1,25 +1,31 @@
 import { RestaurantData } from "@/constants";
-import { styled } from "styled-components";
-import { Restaurant } from "..";
+import { useState } from "react";
+import { NavMenu, NavMenuTabs, Restaurant } from "..";
+import { Container } from "./styled";
 
 export const Restaurants = ({
   restaurants,
 }: {
   restaurants: RestaurantData[];
 }) => {
+  const [currentRestaurant, setCurrentRestaurant] = useState(
+    restaurants?.[0]?.id || ""
+  );
+
   if (!restaurants?.length) return null;
 
+  const tabs: NavMenuTabs[] = restaurants.map(({ id, name }) => {
+    return { id, title: name };
+  });
+
   return (
-    <Content>
-      {restaurants.map((restaurant) => (
-        <Restaurant key={restaurant.id} restaurant={restaurant} />
-      ))}
-    </Content>
+    <Container>
+      <NavMenu tabs={tabs} setRestaurant={setCurrentRestaurant} />
+      {restaurants.map((restaurant) => {
+        if (currentRestaurant === restaurant.id) {
+          return <Restaurant key={restaurant.id} restaurant={restaurant} />;
+        }
+      })}
+    </Container>
   );
 };
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-`;
