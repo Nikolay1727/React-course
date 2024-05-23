@@ -9,8 +9,8 @@ export const Reviews = ({ reviews }: { reviews: ReviewData[] }) => {
       <h3>Отзывы</h3>
       <ul>
         {reviews.map((review) => (
-          <li>
-            <Review key={review.id} review={review} />
+          <li key={review.id}>
+            <Review review={review} />
           </li>
         ))}
       </ul>
