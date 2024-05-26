@@ -9,10 +9,10 @@ export interface NavMenuTabs {
 
 interface Props {
   tabs: NavMenuTabs[];
-  setRestaurant: (id: string) => void;
+  setItemId: (id: string) => void;
 }
 
-export const NavMenu = ({ tabs, setRestaurant }: Props) => {
+export const NavMenu = ({ tabs, setItemId }: Props) => {
   const [items, setItems] = useState(
     tabs.map((tab, i) => {
       if (i === 0) {
@@ -33,7 +33,7 @@ export const NavMenu = ({ tabs, setRestaurant }: Props) => {
         }
       })
     );
-    setRestaurant(id);
+    setItemId(id);
   };
 
   return (
