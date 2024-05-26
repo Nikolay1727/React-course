@@ -2,7 +2,7 @@ import { RestaurantData } from "@/constants";
 import { Menu } from "../Menu";
 import { Reviews } from "../Reviews";
 
-export const Restaurant = ({ restaurant }: { restaurant: RestaurantData }) => {
+export const Restaurant = ({ restaurant }: { restaurant?: RestaurantData }) => {
   if (!restaurant) return null;
 
   return (
