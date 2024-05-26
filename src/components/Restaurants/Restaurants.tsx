@@ -1,5 +1,5 @@
 import { RestaurantData } from "@/constants";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { NavMenu, NavMenuTabs, Restaurant } from "..";
 import { Container } from "./styled";
 
@@ -8,24 +8,27 @@ export const Restaurants = ({
 }: {
   restaurants: RestaurantData[];
 }) => {
-  const [currentRestaurant, setCurrentRestaurant] = useState(
+  const [currentRestaurantId, setCurrentRestaurantId] = useState(
     restaurants?.[0]?.id || ""
+  );
+
+  const tabs: NavMenuTabs[] = useMemo(
+    () => restaurants?.map(({ id, name }) => ({ id, title: name })) || [],
+    [restaurants]
   );
 
   if (!restaurants?.length) return null;
 
-  const tabs: NavMenuTabs[] = restaurants.map(({ id, name }) => {
-    return { id, title: name };
-  });
-
   return (
     <Container>
-      <NavMenu tabs={tabs} setRestaurant={setCurrentRestaurant} />
-      {restaurants.map((restaurant) => {
-        if (currentRestaurant === restaurant.id) {
-          return <Restaurant key={restaurant.id} restaurant={restaurant} />;
-        }
-      })}
+      <NavMenu tabs={tabs} setItemId={setCurrentRestaurantId} />
+      {currentRestaurantId && (
+        <Restaurant
+          restaurant={restaurants.find(
+            (item) => item.id === currentRestaurantId
+          )}
+        />
+      )}
     </Container>
   );
 };
