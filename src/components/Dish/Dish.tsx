@@ -6,7 +6,7 @@ import { Button } from "../Button";
 import { ButtonBlock, Container, Count } from "./styled";
 
 export const Dish = ({ dish }: { dish: DishData }) => {
-  const contextUser = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const { count, increase, decrease } = useCount({});
 
@@ -15,7 +15,7 @@ export const Dish = ({ dish }: { dish: DishData }) => {
   return (
     <Container>
       {dish.name}
-      {contextUser && (
+      {user && (
         <ButtonBlock>
           <Button onClick={decrease}>-</Button>
           <Count>{count}</Count>
