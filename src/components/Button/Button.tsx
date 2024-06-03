@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes } from "react";
+import { ThemeContext } from "@/contexts";
+import { ButtonHTMLAttributes, useContext } from "react";
 import { StyledButton } from "./styled";
 
 type Props = {
@@ -6,5 +7,11 @@ type Props = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = ({ children, ...props }: Props) => {
-  return <StyledButton {...props}>{children}</StyledButton>;
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <StyledButton contextTheme={theme} {...props}>
+      {children}
+    </StyledButton>
+  );
 };
