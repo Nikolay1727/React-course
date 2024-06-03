@@ -1,14 +1,11 @@
-import { ModalContext, UserContext } from "@/contexts";
+import { ModalContext, ThemeContext, UserContext } from "@/contexts";
 import { useContext } from "react";
 import styled from "styled-components";
 import { Button } from "../Button";
 import { ModalUser } from "../ModalUser";
 
-interface Props {
-  setTheme: () => void;
-}
-
-export const Header = ({ setTheme }: Props) => {
+export const Header = () => {
+  const { setTheme } = useContext(ThemeContext);
   const { user, setUser } = useContext(UserContext);
   const { isOpenModal, onOpenModal } = useContext(ModalContext);
 

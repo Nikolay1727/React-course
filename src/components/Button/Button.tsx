@@ -7,10 +7,10 @@ type Props = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = ({ children, ...props }: Props) => {
-  const contextTheme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <StyledButton contextTheme={contextTheme} {...props}>
+    <StyledButton contextTheme={theme} {...props}>
       {children}
     </StyledButton>
   );
