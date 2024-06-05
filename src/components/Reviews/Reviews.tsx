@@ -1,16 +1,15 @@
-import { ReviewData } from "@/constants";
 import { Review } from "../Review";
 
-export const Reviews = ({ reviews }: { reviews: ReviewData[] }) => {
-  if (!reviews?.length) return null;
+export const Reviews = ({ reviewIds }: { reviewIds: string[] }) => {
+  if (!reviewIds?.length) return null;
 
   return (
     <div>
       <h3>Отзывы</h3>
       <ul>
-        {reviews.map((review) => (
-          <li key={review.id}>
-            <Review review={review} />
+        {reviewIds.map((reviewId) => (
+          <li key={reviewId}>
+            <Review reviewId={reviewId} />
           </li>
         ))}
       </ul>
