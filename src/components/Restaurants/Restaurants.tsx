@@ -1,5 +1,6 @@
 import { RestaurantData } from "@/constants";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
 import { NavMenu, NavMenuTabs, Restaurant } from "..";
 import { Container } from "./styled";
 
@@ -8,27 +9,19 @@ export const Restaurants = ({
 }: {
   restaurants: RestaurantData[];
 }) => {
-  const [currentRestaurantId, setCurrentRestaurantId] = useState(
-    restaurants?.[0]?.id || ""
-  );
+  const tab: string = useSelector((state: any) => state.tab.tab);
 
   const tabs: NavMenuTabs[] = useMemo(
-    () => restaurants?.map(({ id, name }) => ({ id, title: name })) || [],
+    () => restaurants.map(({ id, name }) => ({ id, title: name })) || [],
     [restaurants]
   );
 
-  if (!restaurants?.length) return null;
+  if (!tab) return null;
 
   return (
     <Container>
-      <NavMenu tabs={tabs} setItemId={setCurrentRestaurantId} />
-      {currentRestaurantId && (
-        <Restaurant
-          restaurant={restaurants.find(
-            (item) => item.id === currentRestaurantId
-          )}
-        />
-      )}
+      <NavMenu tabs={tabs} />
+      <Restaurant restaurantId={tab} />
     </Container>
   );
 };

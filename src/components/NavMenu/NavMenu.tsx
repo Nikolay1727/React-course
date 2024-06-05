@@ -1,4 +1,6 @@
+import { tabActions } from "@/redux/entities";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Container, NavButton } from "./styled";
 
 export interface NavMenuTabs {
@@ -9,10 +11,11 @@ export interface NavMenuTabs {
 
 interface Props {
   tabs: NavMenuTabs[];
-  setItemId: (id: string) => void;
 }
 
-export const NavMenu = ({ tabs, setItemId }: Props) => {
+export const NavMenu = ({ tabs }: Props) => {
+  const dispatch = useDispatch();
+
   const [items, setItems] = useState(
     tabs.map((tab, i) => {
       if (i === 0) {
@@ -33,7 +36,7 @@ export const NavMenu = ({ tabs, setItemId }: Props) => {
         }
       })
     );
-    setItemId(id);
+    dispatch(tabActions.setTab(id));
   };
 
   return (
