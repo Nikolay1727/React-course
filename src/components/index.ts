@@ -4,3 +4,4 @@ export * from "./Header";
 export * from "./NavMenu";
 export * from "./Restaurant";
 export * from "./Restaurants";
+export * from "./ScrollProgressBar";
