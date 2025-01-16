@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import { AuthorizationButton } from "../AuthorizationButton";
 import { ThemeToggler } from "../ThemeToggler";
 
 export const Header = () => (
   <Container>
     <span>Header</span>
     <ThemeToggler />
+    <AuthorizationButton />
   </Container>
 );
 

@@ -1,15 +1,13 @@
-import { Footer, Header, Restaurants } from "./components";
-import { ScrollProgressBar } from "./components/ScrollProgressBar";
+import { Layout, Restaurants } from "./components";
 import { restaurants } from "./constants";
-import { ThemeContextProvider } from "./contexts";
+import { ThemeContextProvider, UserContextProvider } from "./contexts";
 
 export const App = () => (
   <ThemeContextProvider>
-    <div>
-      <Header />
-      <ScrollProgressBar />
-      <Restaurants restaurants={restaurants} />
-      <Footer />
-    </div>
+    <UserContextProvider>
+      <Layout>
+        <Restaurants restaurants={restaurants} />
+      </Layout>
+    </UserContextProvider>
   </ThemeContextProvider>
 );
