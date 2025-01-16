@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import { ThemeToggler } from "../ThemeToggler";
 
-export const Header = () => <Container>Header</Container>;
+export const Header = () => (
+  <Container>
+    <span>Header</span>
+    <ThemeToggler />
+  </Container>
+);
 
 const Container = styled.div`
   position: fixed;
