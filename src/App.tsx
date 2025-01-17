@@ -1,13 +1,16 @@
+import { Provider } from "react-redux";
 import { Layout, Restaurants } from "./components";
-import { restaurants } from "./constants";
 import { ThemeContextProvider, UserContextProvider } from "./contexts";
+import { store } from "./redux";
 
 export const App = () => (
-  <ThemeContextProvider>
-    <UserContextProvider>
-      <Layout>
-        <Restaurants restaurants={restaurants} />
-      </Layout>
-    </UserContextProvider>
-  </ThemeContextProvider>
+  <Provider store={store}>
+    <ThemeContextProvider>
+      <UserContextProvider>
+        <Layout>
+          <Restaurants />
+        </Layout>
+      </UserContextProvider>
+    </ThemeContextProvider>
+  </Provider>
 );

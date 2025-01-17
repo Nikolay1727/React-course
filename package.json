@@ -11,8 +11,10 @@
     "format": "organize-imports-cli tsconfig.json && prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.2.0",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
